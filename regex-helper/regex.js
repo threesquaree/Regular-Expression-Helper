@@ -1,8 +1,13 @@
-if(document.getElementById("pattern").value.length == 0) {
-    alert("Please enter a pattern to continue.");
-}
-else if(document.getElementById("string").value.length == 0) {
-    alert("Please enter a string to continue.");
+if(document.getElementById('Run').clicked == true) {
+    if(document.getElementById("pattern").value.length == 0) {
+        alert("Please enter a pattern to continue.");
+    }
+    else if(document.getElementById("string").value.length == 0) {
+        alert("Please enter a string to continue.");
+    }
+    else if(document.getElementById("string").value.length == 0 && document.getElementById("pattern").value.length == 0) {
+        alert("No values entered. Try again.");
+    }
 }
 
 const myRe = document.getElementById("pattern");
@@ -15,7 +20,7 @@ const multilineRegex = new RegExp(myRe.value, 'm');
 const stickyRegex = new RegExp(myRe.value, 'y');
 
 function global_run() {
-    if (regex-func.value == "test") {
+    if (document.getElementById("regex-func").value == "test") {
     document.getElementById("regex-output").innerHTML = globalRegex.test(myString.value);
     }
     else if (regex-func.value == "search") {
