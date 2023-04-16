@@ -1,44 +1,49 @@
-if(document.getElementById('Run').clicked == true) {
-    if(document.getElementById("pattern").value.length == 0) {
-        alert("Please enter a pattern to continue.");
-    }
-    else if(document.getElementById("string").value.length == 0) {
-        alert("Please enter a string to continue.");
-    }
-    else if(document.getElementById("string").value.length == 0 && document.getElementById("pattern").value.length == 0) {
-        alert("No values entered. Try again.");
-    }
-}
-
-const myRe = document.getElementById("pattern");
-const myString = document.getElementById("string");
-
-const regex = new RegExp(myRe.value);
-const globalRegex = new RegExp(myRe.value, 'g');
-const incaseRegex = new RegExp(myRe.value, 'i');
-const multilineRegex = new RegExp(myRe.value, 'm');
-const stickyRegex = new RegExp(myRe.value, 'y');
-
-function global_run() {
-    if (document.getElementById("regex-func").value == "test") {
-    document.getElementById("regex-output").innerHTML = globalRegex.test(myString.value);
-    }
-    else if (regex-func.value == "search") {
-    document.getElementById("regex-output").innerHTML = globalRegex.search(myString.value);
-    }
-    else {
-    document.getElementById("regex-output").innerHTML = globalRegex.match(myString.value);
-    }
-}
-
-function incase_run() {
-    if (regex-func.value == "test") {
-    document.getElementById("regex-output").innerHTML = incaseRegex.test(myString.value);
-    }
-    else if (regex-func.value == "search") {
-    document.getElementById("regex-output").innerHTML = incaseRegex.search(myString.value);
-    }
-    else {
-    document.getElementById("regex-output").innerHTML = incaseRegex.match(myString.value);
-    }
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const runBtn = document.getElementById("run-btn");
+    const patternInput = document.getElementById("pattern");
+    const stringInput = document.getElementById("string");
+    const regexFlagSelect = document.getElementById("regex-flag");
+    const regexFuncSelect = document.getElementById("regex-func");
+    const outputEl = document.getElementById("regex-output");
+    const warningEl = document.getElementById("warning-msg");
+  
+    runBtn.addEventListener("click", () => {
+      const pattern = patternInput.value;
+      const string = stringInput.value;
+      const regexFlags = regexFlagSelect.value;
+      const regexFunc = regexFuncSelect.value;
+  
+      if (pattern.length == 0) {
+        warningEl.innerHTML = "Please enter a pattern to continue.";
+        return;
+      }
+  
+      if (string.length == 0) {
+        warningEl.innerHTML = "Please enter a string to continue.";
+        return;
+      }
+  
+      const regex = new RegExp(pattern, regexFlags);
+      let result;
+      switch (regexFunc) {
+        case "test":
+          result = regex.test(string);
+          break;
+        case "search":
+          result = string.search(regex);
+          break;
+        case "match":
+          result = string.match(regex);
+          break;
+      }
+  
+      if (result == null) {
+        outputEl.innerHTML = "No matches found.";
+      } else {
+        outputEl.innerHTML = result.toString();
+      }
+      
+      warningEl.innerHTML = "";
+    });
+  });
+  

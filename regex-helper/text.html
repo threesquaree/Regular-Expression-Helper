@@ -1,99 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regex Helper</title>
-    <link rel="stylesheet" type= "text/css" href="default.css">
-</head>
-<body>
+  </head>
+  <body>
+    <div class="box">
+      <h1>Reg-Ex Helper</h1>
+      <!-- <img src="regex-helper mod/pattern_gif.gif" alt="GIF image" /> -->
+      <img src="/regex-helper/geometric-abstract.gif" alt="GIF image" class="rounded-gif" /> 
+    </div>
+    <p class="text-desc">
+      A tool for regular expressions with minimal design.
+    </p>
 
-<title>Regex Helper</title>
-
-<style>
-
-    p {
-        font-family: Arial;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-     
-    .text-title {
-        text-align: center;
-        font-family: Arial;
-        font-size: 18px;
-        font-weight: bold;
-        width: 300px;
-        line-height: 24px;
-        margin-bottom: 1px;
-    }
-
-    .text-desc {
-        font-family: Arial;
-        font-size: 14px;
-        color: rgb(96, 96, 96);
-        margin-top: 0px;
-        margin-bottom: 50px;
-    }
-
-    .box-desc {
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
-
-    .pattern {
-        margin-bottom: 20px;
-    }
-
-    .string {
-        margin-bottom: 20px;
-    }
-
-    .method {
-        margin-bottom: 15px;
-    }
-
-</style>
-
-<p class="text-title">
-    <h1>Reg-Ex Helper</h1>
-</p>
-
-<p class="text-desc">
-    A tool for regular expressions with minimal design.
-</p>
-
-<div class="pattern">
-    <p class="box-desc">Regular Expression: </p>
-    <input type="text" id="pattern">
-    <select name="regex-flag" id="regex-flag">
+    <div class="pattern">
+      <p class="box-desc">Regular Expression: </p>
+      <input type="text" id="pattern">
+      <select name="regex-flag" id="regex-flag">
+        <option value="">None</option>
         <option value="g">Global</option>
-      <option value="i">Case-Insensitive</option>
-      <option value="m">Multi-line</option>
-      <option value="y">Sticky</option>
-    </select>
-</div>
+        <option value="i">Case-Insensitive</option>
+        <option value="m">Multi-line</option>
+        <option value="y">Sticky</option>
+      </select>
+    </div>
 
-<div class="string">
-    <p class="box-desc">String Input: </p>
-    <input type="text" id="string">
-</div>
+    <div class="string">
+      <p class="box-desc">String Input: </p>
+      <input type="text" id="string">
+    </div>
 
-<div class="method">
-    <select name="regex-func" id="regex-func">
+    <div class="method">
+      <select name="regex-func" id="regex-func">
         <option value="test">Test</option>
         <option value="search">Search</option>
         <option value="match">Match</option>
-    </select>
-</div>
+      </select>
+    </div>
 
-<button id="Run" onclick="global_run()">Run</button>
+    <button id="run-btn">Run</button>
 
-<p class="regex-output" id="regex-output">
-</p>
+    <p class="regex-output" id="regex-output"></p>
+    <p id="warning-msg"></p>
 
-<script src="regex.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700|Playfair+Display:400,700" rel="stylesheet">
 
-</body>
+    <script src="regex.js"></script>
+  </body>
 </html>
